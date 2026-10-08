@@ -1,0 +1,90 @@
+{
+  "case_id": "comprehensive-business-v1",
+  "project_name": "综合功能验收(test)",
+  "description": "完全虚构的多月 SaaS 综合验收资料。订单为唯一金额事实源；销售汇总和简报不能重复相加。含中文字段、跨时区日期、部分退款、多行反馈、未映射及指令干扰样本。",
+  "mapping": {
+    "order_id": "订单编号",
+    "paid_at": "支付时间",
+    "paid_amount": "实付金额",
+    "refund_amount": "累计退款",
+    "region": "地区",
+    "product": "产品",
+    "status": "订单状态"
+  },
+  "order_rows": 2440,
+  "feedback_rows": 120,
+  "monthly": {
+    "2026-06": {
+      "paid_sales": "260000.00",
+      "net_sales": "254800.00",
+      "paid_orders": "600.00",
+      "refund_rate": "4.00",
+      "refund_orders": 24
+    },
+    "2026-07": {
+      "paid_sales": "312000.00",
+      "net_sales": "302640.00",
+      "paid_orders": "600.00",
+      "refund_rate": "6.00",
+      "refund_orders": 36
+    },
+    "2026-08": {
+      "paid_sales": "286000.00",
+      "net_sales": "274560.00",
+      "paid_orders": "600.00",
+      "refund_rate": "8.00",
+      "refund_orders": 48
+    },
+    "2026-09": {
+      "paid_sales": "234000.00",
+      "net_sales": "219375.00",
+      "paid_orders": "600.00",
+      "refund_rate": "12.50",
+      "refund_orders": 75
+    }
+  },
+  "september_change_percent": {
+    "paid_sales": "-18.18",
+    "net_sales": "-20.10",
+    "paid_orders": "0.00",
+    "refund_rate": "56.25"
+  },
+  "september_net_by_region": {
+    "华东": "52650.00",
+    "华南": "53820.00",
+    "华北": "55575.00",
+    "西南": "57330.00"
+  },
+  "september_net_by_product": {
+    "基础版": "16875.00",
+    "专业版": "50625.00",
+    "企业版": "151875.00"
+  },
+  "total": {
+    "paid_sales": "1092000.00",
+    "net_sales": "1051375.00",
+    "paid_orders": "2400.00",
+    "refund_rate": "7.62"
+  },
+  "boundary_records": [1, 611, 1221, 1831],
+  "special_feedback_record": 91,
+  "main_question": "请比较2026年9月与8月的净销售额，并按地区分析变化；结合客户反馈和客服与版本复盘，列出需要优先调查的可能原因及行动建议。请引用原文，区分已确认事实、推测和缺失信息，不要把反馈或时间重合当作因果证明。金额只计算订单明细，不叠加销售汇总。",
+  "main_sources": ["订单明细.csv", "客户反馈.csv", "客服与版本复盘.pdf"],
+  "retrieval_checks": [
+    {
+      "source": "客户反馈.csv",
+      "query": "2026年9月升级4.0后闪退，申请部分退款",
+      "contains": "申请部分退款"
+    },
+    {
+      "source": "客服与版本复盘.pdf",
+      "query": "4.0版本发布之后有哪些已知问题，能否证明销售下降原因",
+      "contains": "不能证明"
+    },
+    {
+      "source": "产品与指标口径.pdf",
+      "query": "退款订单比例的分子分母是什么",
+      "contains": "累计退款金额大于零"
+    }
+  ]
+}

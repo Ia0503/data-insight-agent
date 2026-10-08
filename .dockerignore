@@ -1,0 +1,17 @@
+**
+!backend/
+!backend/**
+!frontend/
+!frontend/**
+!deploy/
+!deploy/**
+!test/
+!test/data/
+!test/data/business/
+!test/data/business/**
+backend/**/__pycache__/
+backend/**/*.pyc
+backend/**/*.egg-info/
+frontend/node_modules/
+frontend/dist/
+frontend/.env*

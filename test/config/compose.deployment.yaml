@@ -1,0 +1,14 @@
+services:
+  db:
+    ports: !override
+      - "127.0.0.1:${TEST_POSTGRES_PORT:-55632}:5432"
+  backend:
+    user: "1000:1000"
+    volumes: !override
+      - deployment_uploads:/app/runtime/uploads
+      - ./runtime/models:/app/runtime/models:ro
+  frontend:
+    ports: !override
+      - "127.0.0.1:${TEST_WEB_PORT:-8081}:8080"
+volumes:
+  deployment_uploads:

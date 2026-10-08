@@ -1,0 +1,55 @@
+{
+  "version": "business-evaluation-v1",
+  "frozen_at_utc": "2026-10-07T05:18:59.233181+00:00",
+  "git_baseline": "860136ec3dc76a18ed6c9fc22a75f88491c52723",
+  "files": {
+    "test/data/evaluation/cases.json": "00e546a93ad48786bd87a3a0fcd94a2dfd30b1938e5aed96f0124a2ae659d0e8",
+    "test/data/business/orders.csv": "faf69ae9cdc64220bee8e53190582bcd1d0624c38a86059ebb44072acdd1e50c",
+    "test/data/business/feedback.csv": "818b5b39f049c05cc371ed5c7b59a2ab413bb6315176015f753172bdc6902462",
+    "test/data/business/quarterly_report.pdf": "a7263cf0024c8297631a5e0b62947e9a50046d3b76cef0c5b1f7b385566929a9",
+    "test/data/business/product_manual.pdf": "e1a5aaf0a79cc5feae9fb9f0b5682523b4ef994f57f278b74989a34685f2d46b",
+    "test/data/business/feedback_injection.csv": "fc97771269d67927159f1abdf2f7dd406bd386fcbd229c81f2b8d660d32d8220",
+    "test/data/evaluation/heldout_orders.csv": "1caaac07a70097410d77990fb1e93a7e4516ec7a0f69f66a7eab7d93b91264d8",
+    "test/data/evaluation/heldout_feedback.csv": "436cf33d30e7d81c619992bcdf9ad0d5a313e7cf99bd640134e1d3b6f207085b",
+    "test/data/evaluation/heldout_summary.csv": "7ce099ad9f6a7c1f5daa12670acd30b1aba8d91621639bedf7b8c3b47a96275a"
+  },
+  "llm": {
+    "provider": "aliyun",
+    "model": "deepseek-v4.1-flash",
+    "thinking": false,
+    "timeout_seconds": 60
+  },
+  "embedding": {
+    "adapter": "transformers-v1",
+    "model": "BAAI/bge-base-zh-v1.5",
+    "revision": "f03589ceff5aac7111bd60cfc7d497ca17ecac65",
+    "dimension": 768,
+    "pooling": "cls",
+    "query_prefix": "为这个句子生成表示以用于检索相关文章：",
+    "document_prefix": "",
+    "max_tokens": 512
+  },
+  "chunk_tokens": 300,
+  "chunk_overlap": 40,
+  "code": {
+    "backend/app/agent/graph.py": "69c48e07248aa3f481918c7fcd5840cc9def3735196e2f94dffad87459f96ad8",
+    "backend/app/agent/report.py": "cef70c86e625263ef6480ae74daf9d29fa2df9da1e7dd0fdc80bb384994a8e17",
+    "backend/app/agent/model.py": "d08f0ee12272b5106ea22c96268f3c747741a1d50302a28dcca5b3f9f832a886",
+    "test/evaluation/run_batch.py": "28db74cf799ba011e3c987ae310c31613a7c0b8df539da4a334b3d58d30dd069",
+    "test/evaluation/batch_scoring.py": "622dbe36e74b5eb5fa4eac7fde6605874f0ff53ecddd879ad5c47c699e2adf51"
+  },
+  "split_counts": {
+    "metrics": {
+      "development": 6,
+      "heldout": 6
+    },
+    "retrieval": {
+      "development": 6,
+      "heldout": 6
+    },
+    "agents": {
+      "development": 3,
+      "heldout": 3
+    }
+  }
+}

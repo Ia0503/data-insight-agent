@@ -1,0 +1,39 @@
+{
+  "case_id": "comprehensive-business-v1",
+  "fictional": true,
+  "expected_sha256": "c650bd8d38bcaaa8316c94e254b29a89f3a6bd5b9fcc4aed7cea1f6cba301dbc",
+  "assets": {
+    "产品与指标口径.pdf": {
+      "sha256": "1832d87063dce6e0f734f21fbd9b82c893d370f39f21b1494ffa8ed7ce44d682",
+      "bytes": 5298
+    },
+    "季度经营简报.pdf": {
+      "sha256": "a703287743fe25b3bf433578eb3f54fd6e6afde7bde3e0a132f6863cbb3d019c",
+      "bytes": 5109
+    },
+    "客户反馈.csv": {
+      "sha256": "5da45801293ae07053ad9520355d95a9b0c6f6f96eb2585dd3529e37514ed8ed",
+      "bytes": 14844
+    },
+    "客服与版本复盘.pdf": {
+      "sha256": "a88452fa406a6a8b9d37147fe896f78e1444a3ced0e83899acaea17bd60cabe9",
+      "bytes": 5154
+    },
+    "指令干扰反馈.csv": {
+      "sha256": "632dfda9952fcf649c59bad3a537de5a3c3e82229dfd4a4dce231b4de15f8a79",
+      "bytes": 213
+    },
+    "未映射订单样本.csv": {
+      "sha256": "be06e2f1103f4579d15f9b9ce2e79affc1cb16efca96369131f3a4d689afb2d9",
+      "bytes": 1119
+    },
+    "订单明细.csv": {
+      "sha256": "11403d5cf82233174ee23a712f073251541075cb1f0517c91b68096af03614dd",
+      "bytes": 200319
+    },
+    "销售汇总.csv": {
+      "sha256": "9a2c63ed0030607df9090376e1eeb45c1fd79043975bd886e0752cd414d0735a",
+      "bytes": 226
+    }
+  }
+}

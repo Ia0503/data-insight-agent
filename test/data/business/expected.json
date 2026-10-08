@@ -1,0 +1,18 @@
+{
+  "note": "独立手算答案：每月四笔订单；八月4×25000，九月4×20000，九月退款1000+3000。",
+  "september": {
+    "paid_sales": {"value": "80000.00", "change_percent": "-20.00"},
+    "net_sales": {"value": "76000.00", "change_percent": "-24.00"},
+    "paid_orders": {"value": "4.00", "change_percent": "0.00"},
+    "refund_rate": {"value": "50.00", "change_percent": null},
+    "region_net": {"华东": "39000.00", "华西": "37000.00"},
+    "records": [5, 6, 7, 8]
+  },
+  "retrieval": [
+    {"query": "升级以后软件闪退，有用户要求退钱吗？", "filename": "quarterly_report.pdf", "page": 2},
+    {"query": "九月相比八月，实付收入减少多少？", "filename": "quarterly_report.pdf", "page": 1},
+    {"query": "新版本有哪些新增功能？", "filename": "quarterly_report.pdf", "page": 2},
+    {"query": "软件意外退出之后要求退还费用", "filename": "feedback.csv", "record": 6},
+    {"query": "账户无法登录一直在加载", "filename": "feedback.csv", "record": 2}
+  ]
+}

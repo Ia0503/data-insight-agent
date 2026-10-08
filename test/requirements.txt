@@ -1,0 +1,9 @@
+# Reuse the production pins; keep only testing and fixture generation extras here.
+-r ../backend/requirements.txt
+iniconfig==2.3.0
+pillow==12.3.0
+pluggy==1.6.0
+pygments==2.21.0
+pytest==9.1.1
+reportlab==5.0.1
+ruff==0.16.10

@@ -1,0 +1,37 @@
+# Local secrets and configuration
+.env
+.env.*
+!.env.example
+
+# Python dependencies and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Frontend dependencies and build output
+node_modules/
+dist/
+coverage/
+
+# Runtime and test artifacts
+uploads/
+runtime/
+*.log
+test/results/
+test/.cache/
+test/playwright-report/
+test/test-results/
+
+# Local editor and operating system files
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local development instructions and personal notes
+/AGENTS.md
+/info/

@@ -1,0 +1,71 @@
+name: Project checks
+on:
+  push:
+    branches: [main, "feat/**"]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    services:
+      postgres:
+        image: pgvector/pgvector@sha256:ac08538c6f8b9904c33c8224c5e5706dbe760aca29db1d096972b4052c22a75d
+        env:
+          POSTGRES_DB: newai_test
+          POSTGRES_USER: newai
+          POSTGRES_PASSWORD: test-only-ci-password
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U newai -d newai_test"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+psycopg://newai:test-only-ci-password@127.0.0.1:5432/newai_test
+      TEST_DATABASE_URL: postgresql+psycopg://newai:test-only-ci-password@127.0.0.1:5432/newai_test
+      LLM_CALLS_ENABLED: "false"
+      ANALYSIS_PASSWORD_REQUIRED: "false"
+      E2E_CHANNEL: chromium
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: |
+            frontend/package-lock.json
+            test/package-lock.json
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: runtime/models/bge-base-zh-v1.5
+          key: bge-base-zh-v1.5-f03589ceff5aac7111bd60cfc7d497ca17ecac65
+      - name: Dependencies
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install -r test/requirements.txt
+          .venv/bin/python -m pip install --no-deps -e ./backend
+          .venv/bin/python -m pip check
+          npm --prefix frontend ci
+          npm --prefix test ci
+          node test/node_modules/@playwright/test/cli.js install --with-deps chromium
+      - name: Local embedding model
+        run: .venv/bin/python backend/setup_embeddings.py
+      - name: Code and behavior checks
+        run: bash test/ci/verify.sh
+      - name: Container build and isolated startup
+        run: bash test/ci/containers.sh
+      - name: Preserve test diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: checks-${{ github.run_id }}
+          retention-days: 7
+          if-no-files-found: ignore
+          path: |
+            test/results/ci/pytest.xml
+            test/results/playwright.json
+            test/results/browser/
+            test/results/ci/compose-smoke.json
